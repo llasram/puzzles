@@ -1,0 +1,23 @@
+Here's the plan for this one:
+
+  - Data:
+    - The set of all possible pieces in all possible board positions.
+    - A mapping of each board position to the pieces occupying that position.
+
+  - Inputs:
+    - A list of all legal 8-piece sets which occupy all vertices, eliminating
+      unsolvable and isomorphic boards.
+
+  - State, iterated for each input:
+    - The current board state, initially formed by merging all the boards of
+      the input piece-set.
+    - A count of the number of pieces already placed.
+
+  - Algorithm, iterated for each input:
+    1. Determine the lowest unoccupied board position.
+    2. For each possible piece occupying that position, perform the following:
+    3. If the piece overlaps the board, move on to the next piece at (2).
+    4. Create a new board state merging the piece and the old state.
+    5. If this is the 25th piece, then the puzzle is solved!  Otherwise:
+    6. If this board state is unsolvable, move on to the next piece at (2).
+    7. Recursively begin again at (1) with the new state information.
